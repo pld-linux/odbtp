@@ -65,7 +65,7 @@ Requires(post,preun):	php-common >= 4.1
 
 %description -n php-%{name}
 This is a Dynamic Shared Object (DSO) for PHP that will add odbtp
-support. It is build with MSSQL support enabled.
+support. It is built with MSSQL support enabled.
 
 %description -n php-%{name} -l pl
 Modu³ PHP umo¿liwiaj±cy korzystanie z biblioteki odbtp. Modu³
@@ -135,5 +135,5 @@ fi
 
 %files -n php-%{name}
 %defattr(644,root,root,755)
-%{_sysconfdir}/odbtp/odbtp.conf
-%attr(755,root,root)%{_libdir}/php/odbtp.so
+%attr(755,root,root) %{_libdir}/php/odbtp.so
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/odbtp/odbtp.conf
