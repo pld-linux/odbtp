@@ -2,7 +2,7 @@ Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/odbtp/%{name}-%{version}.tar.gz
