@@ -64,7 +64,7 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	php = %{php_ver}
 Requires(post,preun):	php-common >= 4.1
-Obsoletes:	php-pear-%{name}
+Obsoletes:	php-pear-DB_%{name}
 Obsoletes:	php-pecl-%{name}
 
 %description -n php-%{name}
