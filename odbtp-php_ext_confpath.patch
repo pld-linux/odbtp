@@ -1,0 +1,12 @@
+diff -ur odbtp-1.1.2.orig/php/ext/odbtp/php_odbtp.c odbtp-1.1.2/php/ext/odbtp/php_odbtp.c
+--- odbtp-1.1.2.orig/php/ext/odbtp/php_odbtp.c	2004-08-15 04:14:10.000000000 +0200
++++ odbtp-1.1.2/php/ext/odbtp/php_odbtp.c	2005-01-04 20:34:37.000000000 +0100
+@@ -305,7 +305,7 @@
+ /* {{{ PHP_INI
+  */
+ PHP_INI_BEGIN()
+-    STD_PHP_INI_ENTRY("odbtp.interface_file", "/usr/local/share/odbtp.conf", PHP_INI_ALL, OnUpdateString, interface_file, zend_odbtp_globals, odbtp_globals)
++    STD_PHP_INI_ENTRY("odbtp.interface_file", "/etc/odbtp/odbtp.conf", PHP_INI_ALL, OnUpdateString, interface_file, zend_odbtp_globals, odbtp_globals)
+     STD_PHP_INI_ENTRY("odbtp.datetime_format", "object", PHP_INI_ALL, OnUpdateString, datetime_format, zend_odbtp_globals, odbtp_globals)
+     STD_PHP_INI_BOOLEAN("odbtp.detach_default_queries", "0", PHP_INI_ALL, OnUpdateBool, detach_default_queries, zend_odbtp_globals, odbtp_globals)
+     STD_PHP_INI_BOOLEAN("odbtp.truncation_errors", "1", PHP_INI_ALL, OnUpdateBool, truncation_errors, zend_odbtp_globals, odbtp_globals)
