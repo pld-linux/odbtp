@@ -1,5 +1,5 @@
-Summary:	Accessing win32-based databases using TCP/IP protocol.
-Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP.
+Summary:	Accessing win32-based databases using TCP/IP protocol
+Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
 Release:	0.1
@@ -7,10 +7,10 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/odbtp/%{name}-%{version}.tar.gz
 # Source0-md5:	dc34b6454fe94fe08d3c39dda84cfcc3
+URL:		http://odbtp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-URL:		http://odbtp.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,7 +21,7 @@ ODBTP is fast, efficient, and has many features that make it a quality
 Open Source solution for database connectivity.
 
 %description -l pl
-ODBTP to protokó³ TCP/IP s³u¿±cy do ³±czenia siê z dowolnej platoformy
+ODBTP to protokó³ TCP/IP s³u¿±cy do ³±czenia siê z dowolnej platformy
 z bazami danych opartych na Win32. Idealnie sprawdza siê w zdalnym
 dostêpie do baz MS SQL Server, MS Access, czy Visual FoxPro. ODBTP
 jest szybki, wydajny oraz posiada wiele innych cech podnosz±cych
