@@ -64,8 +64,8 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	php = %{php_ver}
 Requires(post,preun):	php-common >= 4.1
-Obsoletes:	php-pear-DB_%{name}
-Obsoletes:	php-pecl-%{name}
+Obsoletes:	php-pear-DB_odbtp
+Obsoletes:	php-pecl-odbtp
 
 %description -n php-%{name}
 This is a Dynamic Shared Object (DSO) for PHP that will add odbtp
