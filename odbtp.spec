@@ -4,13 +4,13 @@ Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	dc34b6454fe94fe08d3c39dda84cfcc3
-Patch0:		%{name}-php_ext_makefile.patch
-Patch1:		%{name}-php_ext_confpath.patch
+Patch0:		%{name}-php_ext_confpath.patch
+Patch1:		%{name}-php_ext_config_m4.patch
 URL:		http://odbtp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -60,8 +60,11 @@ Statyczna biblioteka odbtp.
 Summary:	odbtp extension (with MSSQL support) for PHP
 Summary(pl):	Modu³ odbtp (ze wsparciem dla MSSQL) dla PHP
 Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	php = %{php_ver}
 Requires(post,preun):	php-common >= 4.1
+Obsoletes:	php-pear-%{name}
+Obsoletes:	php-pecl-%{name}
 
 %description -n php-%{name}
 This is a Dynamic Shared Object (DSO) for PHP that will add odbtp
@@ -89,7 +92,10 @@ zosta³ zbudowany z w³±czonym wsparciem dla MSSQL.
 
 # build php extension too (with MSSQL support enabled)
 sdir=$(pwd)
-cd php/ext
+cd php/ext/odbtp
+phpize
+%configure \
+        --with-odbtp-mssql=../../../
 %{__make}
 cd $sdir
 
@@ -102,9 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 install libodbtp.so $RPM_BUILD_ROOT%{_libdir}
 
 install -d $RPM_BUILD_ROOT%{_libdir}/php
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/odbtp
-install php/ext/*.so $RPM_BUILD_ROOT%{_libdir}/php
-install examples/odbtp.conf $RPM_BUILD_ROOT%{_sysconfdir}/odbtp
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+install php/ext/%{name}/modules/%{name}.so $RPM_BUILD_ROOT%{_libdir}/php
+install examples/odbtp.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
