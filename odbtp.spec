@@ -88,7 +88,7 @@ zosta³ zbudowany z w³±czonym wsparciem dla MSSQL.
 %configure
 %{__make}
 
-%{__cc} libodbtp.a -o libodbtp.so -shared
+%{__cc} odbtp.o sockutil.o -o libodbtp.so -shared
 
 # build php extension too (with MSSQL support enabled)
 sdir=$(pwd)
