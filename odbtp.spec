@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	dc34b6454fe94fe08d3c39dda84cfcc3
 Patch0:		%{name}-php_ext_confpath.patch
 Patch1:		%{name}-php_ext_config_m4.patch
+Patch2:		%{name}-libtool.patch
 URL:		http://odbtp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -78,6 +79,7 @@ zosta³ zbudowany z w³±czonym wsparciem dla MSSQL.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -88,7 +90,7 @@ zosta³ zbudowany z w³±czonym wsparciem dla MSSQL.
 %configure
 %{__make}
 
-%{__cc} odbtp.o sockutil.o -o libodbtp.so -shared
+ln -s .libs/libodbtp.so libodbtp.so
 
 # build php extension too (with MSSQL support enabled)
 sdir=$(pwd)
@@ -129,11 +131,13 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README README.64bitOS docs
-%attr(755,root,root) %{_libdir}/libodbtp.so
+%attr(755,root,root) %{_libdir}/libodbtp-*.so
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/odbtp.h
+%{_libdir}/libodbtp.so
+%{_libdir}/libodbtp.la
 
 %files static
 %defattr(644,root,root,755)
