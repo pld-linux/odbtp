@@ -13,8 +13,6 @@ Patch0:		%{name}-php_ext_confpath.patch
 Patch1:		%{name}-php_ext_config_m4.patch
 Patch2:		%{name}-libtool.patch
 URL:		http://odbtp.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	php-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
