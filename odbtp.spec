@@ -1,10 +1,11 @@
 # TODO
 # - what about php-pecl-odbtp? one of php-odbtp or php-pecl-odbtp must die
+# - fix this: /sbin/ldconfig: /usr/lib/libodbtp-1.1.so is not a symbolic link
 Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	3.1
+Release:	3.2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -106,8 +107,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install libodbtp.so $RPM_BUILD_ROOT%{_libdir}
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_sysconfdir}/php/conf.d,%{_libdir}/php}
 install php/ext/%{name}/modules/%{name}.so $RPM_BUILD_ROOT%{_libdir}/php
