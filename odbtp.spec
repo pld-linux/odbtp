@@ -1,10 +1,10 @@
-%define		php_ver		%(rpm -q --qf '%%{epoch}:%%{version}' php-devel)
-
+# TODO
+# - what about php-pecl-odbtp? one of php-odbtp or php-pecl-odbtp must die
 Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	3
+Release:	3.1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
@@ -17,6 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	php-devel
+BuildRequires:	rpmbuild(macros) >= 1.238
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -62,8 +63,7 @@ Summary:	odbtp extension (with MSSQL support) for PHP
 Summary(pl):	Modu³ odbtp (ze wsparciem dla MSSQL) dla PHP
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	php = %{php_ver}
-Requires(post,preun):	php-common >= 4.1
+%{?requires_php_extension}
 Obsoletes:	php-pear-DB_odbtp
 Obsoletes:	php-pecl-odbtp
 
@@ -109,10 +109,13 @@ rm -rf $RPM_BUILD_ROOT
 
 install libodbtp.so $RPM_BUILD_ROOT%{_libdir}
 
-install -d $RPM_BUILD_ROOT%{_libdir}/php
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_sysconfdir}/php/conf.d,%{_libdir}/php}
 install php/ext/%{name}/modules/%{name}.so $RPM_BUILD_ROOT%{_libdir}/php
 install examples/odbtp.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+cat <<'EOF' > $RPM_BUILD_ROOT%{_sysconfdir}/php/conf.d/odbtp.ini
+; Enable ODBTP extension module
+extension=odbtp.so
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -121,11 +124,13 @@ rm -rf $RPM_BUILD_ROOT
 %postun	-p /sbin/ldconfig
 
 %post -n php-%{name}
-%{_sbindir}/php-module-install install odbtp %{_sysconfdir}/php/php.ini
+[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
+[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
 
-%preun -n php-%{name}
-if [ "$1" = "0" ]; then
-    %{_sbindir}/php-module-install remove odbtp %{_sysconfdir}/php/php.ini
+%postun -n php-%{name}
+if [ "$1" = 0 ]; then
+	[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
+	[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
 fi
 
 %files
@@ -146,4 +151,5 @@ fi
 %files -n php-%{name}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/php/odbtp.so
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/php/conf.d/odbtp.ini
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/odbtp/odbtp.conf
