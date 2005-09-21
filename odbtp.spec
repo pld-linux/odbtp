@@ -4,14 +4,12 @@ Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	3.4
+Release:	3.6
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	dc34b6454fe94fe08d3c39dda84cfcc3
-Patch0:		%{name}-php_ext_confpath.patch
-Patch1:		%{name}-php_ext_config_m4.patch
-Patch2:		%{name}-libtool.patch
+Patch0:		%{name}-libtool.patch
 URL:		http://odbtp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -60,8 +58,6 @@ Statyczna biblioteka odbtp.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -80,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_sysconfdir}/php/conf.d,%{_libdir}/php}
+install examples/odbtp.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -89,6 +88,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README README.64bitOS docs
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/odbtp.conf
 %attr(755,root,root) %{_libdir}/libodbtp-*.so
 
 %files devel
