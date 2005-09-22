@@ -1,5 +1,3 @@
-# TODO
-# - fix this: /sbin/ldconfig: /usr/lib/libodbtp-1.1.so is not a symbolic link
 Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
@@ -7,7 +5,7 @@ Version:	1.1.2
 Release:	3.6
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/odbtp/%{name}-%{version}.tar.gz
 # Source0-md5:	dc34b6454fe94fe08d3c39dda84cfcc3
 Patch0:		%{name}-libtool.patch
 URL:		http://odbtp.sourceforge.net/
@@ -68,8 +66,6 @@ Statyczna biblioteka odbtp.
 %configure
 %{__make}
 
-ln -s .libs/libodbtp.so libodbtp.so
-
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -94,9 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/odbtp.h
-%{_libdir}/libodbtp.so
+%attr(755,root,root) %{_libdir}/libodbtp.so
 %{_libdir}/libodbtp.la
+%{_includedir}/odbtp.h
 
 %files static
 %defattr(644,root,root,755)
