@@ -2,7 +2,7 @@ Summary:	Accessing win32-based databases using TCP/IP protocol
 Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
 Name:		odbtp
 Version:	1.1.2
-Release:	3.7
+Release:	4
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/odbtp/%{name}-%{version}.tar.gz
@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_sysconfdir}/php/conf.d,%{_libdir}/php}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name}}
 install examples/odbtp.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 
 # make the .so.0, otherwise bad upgrade problems occour
