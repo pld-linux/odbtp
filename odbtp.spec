@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README README.64bitOS docs
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/odbtp.conf
-%attr(755,root,root) %{_libdir}/libodbtp.so.*
+%attr(755,root,root) %{_libdir}/libodbtp.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
