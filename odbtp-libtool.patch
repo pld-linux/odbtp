@@ -1,11 +1,10 @@
 diff -ur odbtp-1.1.4.orig/Makefile.am odbtp-1.1.4/Makefile.am
 --- odbtp-1.1.4.orig/Makefile.am	2005-12-22 20:32:20.000000000 +0100
 +++ odbtp-1.1.4/Makefile.am	2006-07-19 15:58:30.000000000 +0200
-@@ -5,5 +5,5 @@
+@@ -5,5 +5,4 @@
  
  noinst_PROGRAMS = odbtpcli
  odbtpcli_SOURCES = odbtpcli.c
 -odbtpcli_LDADD = -lodbtp
 -odbtpcli_LDFLAGS = -L.
 +odbtpcli_LDADD = libodbtp.la
-+odbtpcli_LDFLAGS = -release $(VERSION)
