@@ -1,5 +1,5 @@
 Summary:	Accessing win32-based databases using TCP/IP protocol
-Summary(pl):	Dostêp do baz danych opartych na win32 za pomoc± protoko³u TCP/IP
+Summary(pl.UTF-8):   DostÄ™p do baz danych opartych na win32 za pomocÄ… protokoÅ‚u TCP/IP
 Name:		odbtp
 Version:	1.1.4
 Release:	1
@@ -22,35 +22,35 @@ MS Access, and Visual FoxPro database from Linux or Unix machines.
 ODBTP is fast, efficient, and has many features that make it a quality
 Open Source solution for database connectivity.
 
-%description -l pl
-ODBTP to protokó³ TCP/IP s³u¿±cy do ³±czenia siê z dowolnej platformy
-z bazami danych opartych na Win32. Idealnie sprawdza siê w zdalnym
-dostêpie do baz MS SQL Server, MS Access, czy Visual FoxPro. ODBTP
-jest szybki, wydajny oraz posiada wiele innych cech podnosz±cych
-jako¶æ.
+%description -l pl.UTF-8
+ODBTP to protokÃ³Å‚ TCP/IP sÅ‚uÅ¼Ä…cy do Å‚Ä…czenia siÄ™ z dowolnej platformy
+z bazami danych opartych na Win32. Idealnie sprawdza siÄ™ w zdalnym
+dostÄ™pie do baz MS SQL Server, MS Access, czy Visual FoxPro. ODBTP
+jest szybki, wydajny oraz posiada wiele innych cech podnoszÄ…cych
+jakoÅ›Ä‡.
 
 %package devel
 Summary:	Header files for odbtp library
-Summary(pl):	Pliki nag³ówkowe biblioteki odbtp
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki odbtp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for odbtp library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki odbtp.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki odbtp.
 
 %package static
 Summary:	Static odbtp library
-Summary(pl):	Statyczna biblioteka odbtp
+Summary(pl.UTF-8):   Statyczna biblioteka odbtp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static odbtp library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka odbtp.
 
 %prep
