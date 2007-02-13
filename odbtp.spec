@@ -1,5 +1,5 @@
 Summary:	Accessing win32-based databases using TCP/IP protocol
-Summary(pl.UTF-8):   Dostęp do baz danych opartych na win32 za pomocą protokołu TCP/IP
+Summary(pl.UTF-8):	Dostęp do baz danych opartych na win32 za pomocą protokołu TCP/IP
 Name:		odbtp
 Version:	1.1.4
 Release:	1
@@ -31,7 +31,7 @@ jakość.
 
 %package devel
 Summary:	Header files for odbtp library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki odbtp
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki odbtp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -43,7 +43,7 @@ Pliki nagłówkowe biblioteki odbtp.
 
 %package static
 Summary:	Static odbtp library
-Summary(pl.UTF-8):   Statyczna biblioteka odbtp
+Summary(pl.UTF-8):	Statyczna biblioteka odbtp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
